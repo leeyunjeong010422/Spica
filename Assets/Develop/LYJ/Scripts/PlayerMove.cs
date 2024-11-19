@@ -12,8 +12,6 @@ public class PlayerMove : MonoBehaviour
     private float defaultColliderHeight;
     private bool isSliding = false;
 
-    private IItem currentItem;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -80,22 +78,6 @@ public class PlayerMove : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0; //점프 횟수 초기화
-        }
-    }
-
-    public void UseItem(IItem item)
-    {
-        if (currentItem != null) return;
-        currentItem = item;
-        currentItem.Activate();
-    }
-
-    public void ClearItem()
-    {
-        if (currentItem != null)
-        {
-            currentItem.Deactivate();
-            currentItem = null;
         }
     }
 }
