@@ -8,12 +8,6 @@ public class Player : MonoBehaviour
 
     public void UseItem(IItem item)
     {
-        if (currentItem != null)
-        {
-            Debug.Log("이미 아이템을 소지 중입니다!");
-            return; // 이미 아이템을 소지 중이라면 무시
-        }
-
         currentItem = item;
         Debug.Log("아이템을 소지했습니다!");
     }
@@ -52,8 +46,8 @@ public class Player : MonoBehaviour
         // 장애물과 충돌 시 아이템 발동
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("플레이어가 장애물과 충돌했습니다! 쉴드가 발동됩니다.");
-            ActivateItem(); // 소지 중인 아이템 발동
+            Debug.Log("플레이어가 장애물과 충돌했습니다! 쉴드가 발동됩니다."); // 로그는 계속 닿을 때마다 출력 사용은 소지시에만
+            ActivateItem();
         }
     }
 }

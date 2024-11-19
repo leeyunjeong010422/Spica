@@ -52,10 +52,10 @@ public class ShieldItem : MonoBehaviour, IItem
                 isCollected = true; // 쉴드 소지 상태로 변경
                 Debug.Log("쉴드를 획득했습니다! 장애물에 부딪히면 자동으로 발동됩니다.");
                 player.UseItem(this);
-                Destroy(gameObject); // 아이템 오브젝트 제거
-
                 player.IncreaseShieldCount();
             }
+
+            Destroy(gameObject); // 아이템 오브젝트 제거
         }
     }
 }
