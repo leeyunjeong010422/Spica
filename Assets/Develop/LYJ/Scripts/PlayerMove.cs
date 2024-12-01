@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     private float defaultColliderHeight;
     private bool isSliding = false;
 
+    private float speedMultiplier = 1f; // 속도 배율? 배수? (기본 값 1)
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,14 +30,14 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveSpeed * speedMultiplier, rb.velocity.y);
     }
 
     private void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < 2))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            rb.velocity = new Vector2(rb.velocity.x * speedMultiplier, jumpPower);
             jumpCount++;
             isGrounded = false;
         }
@@ -79,5 +81,14 @@ public class PlayerMove : MonoBehaviour
             isGrounded = true;
             jumpCount = 0; //점프 횟수 초기화
         }
+    }
+
+    /// <summary>
+    /// 이동 속도 배율 설정 함수
+    /// </summary>
+    /// <param name="multiplier"></param>
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 }
