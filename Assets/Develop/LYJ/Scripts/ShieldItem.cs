@@ -7,6 +7,11 @@ public class ShieldItem : MonoBehaviour, IItem
     private bool isCollected = false; // 쉴드가 소지 중인지 여부
     private bool isActive = false;    // 쉴드가 활성화(무적 상태) 중인지 여부
 
+    private void Start()
+    {
+        player = GetComponent<Player>();
+    }
+
     public void Activate()
     {
         // 장애물과 충돌 시 쉴드 효과 발동
