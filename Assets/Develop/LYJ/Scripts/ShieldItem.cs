@@ -13,7 +13,7 @@ public class ShieldItem : MonoBehaviour, IItem
         if (!isCollected || isActive || player == null || player.ShieldCount <= 0) return;
 
         isActive = true;
-        Debug.Log("쉴드가 발동되었습니다! 플레이어는 5초 동안 무적입니다.");
+        Debug.Log("쉴드 활성화");
 
         // 플레이어를 무적 상태로 변경
         player.gameObject.layer = LayerMask.NameToLayer("Invincible");
@@ -29,7 +29,7 @@ public class ShieldItem : MonoBehaviour, IItem
         if (!isActive || player == null) return;
 
         isActive = false;
-        Debug.Log("쉴드가 비활성화되었습니다! 플레이어는 더 이상 무적이 아닙니다.");
+        Debug.Log("쉴드 비활성화");
 
         // 플레이어 레이어 원래대로 복구
         player.gameObject.layer = LayerMask.NameToLayer("Player");
@@ -50,7 +50,7 @@ public class ShieldItem : MonoBehaviour, IItem
             if (player != null && player.ShieldCount == 0)
             {
                 isCollected = true; // 쉴드 소지 상태로 변경
-                Debug.Log("쉴드를 획득했습니다! 장애물에 부딪히면 자동으로 발동됩니다.");
+                Debug.Log("쉴드를 획득~ 개이득~~");
                 player.UseItem(this);
                 player.IncreaseShieldCount();
             }
